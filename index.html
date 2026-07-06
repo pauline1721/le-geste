@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
 <title>UNIS — Le Geste</title>
 
 <style>
+
 body{
     margin:0;
     background:#efe3cf;
@@ -15,25 +17,34 @@ body{
 
 .page{
     max-width:700px;
-    margin:0 auto;
-    padding:30px 20px 40px;
+    margin:auto;
+    padding:25px 20px 40px;
     box-sizing:border-box;
-    text-align:center;
 }
 
-.logo{
-    width:110px;
-    margin-bottom:25px;
+.image-container{
+    position:relative;
+    width:100%;
 }
 
 .image{
     width:100%;
-    max-width:700px;
     display:block;
-    margin:auto;
     border-radius:18px;
-    box-shadow:0 8px 25px rgba(0,0,0,.15);
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
 }
+
+.logo{
+    position:absolute;
+
+    top:38px;
+    left:50%;
+    transform:translateX(-50%);
+
+    width:105px;
+    z-index:100;
+}
+
 </style>
 
 </head>
@@ -42,15 +53,20 @@ body{
 
 <div class="page">
 
-    <img class="logo"
-         src="logoUNIS-transparent.png"
-         alt="Logo UNIS">
+    <div class="image-container">
 
-    <img class="image"
-         src="image_geste.png"
-         alt="Le Geste UNIS">
+        <img class="image"
+             src="image_geste.png"
+             alt="Le Geste UNIS">
+
+        <img class="logo"
+             src="logoUNIS_transparent.png"
+             alt="Logo UNIS">
+
+    </div>
 
 </div>
 
 </body>
+
 </html>
