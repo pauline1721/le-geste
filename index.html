@@ -8,11 +8,10 @@
 <title>UNIS — Le Geste</title>
 
 <style>
-
 body{
     margin:0;
     background:#efe3cf;
-    font-family:Georgia, serif; 
+    font-family:Georgia, serif;
 }
 
 .page{
@@ -34,39 +33,150 @@ body{
     box-shadow:0 10px 30px rgba(0,0,0,.15);
 }
 
-.logo{
+.logo-zone{
     position:absolute;
-    top:11%;
+    top:20.4%;
     left:50%;
-    transform:translate(-50%, -50%);
-    width:28%;
-    max-width:190px;
-    min-width:110px;
-    z-index:100; 
+    transform:translate(-50%,-50%);
+    width:18%;
+    max-width:125px;
+    min-width:75px;
+    z-index:100;
 }
 
-</style>
+.logo{
+    width:100%;
+    display:block;
+    cursor:pointer;
+    animation:respire 4s ease-in-out infinite;
+    filter:drop-shadow(0 0 8px rgba(180,130,40,.35));
+}
 
+.logo-zone.active .logo{
+    animation:clicLogo .45s ease;
+}
+
+.halo{
+    position:absolute;
+    inset:-18%;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(218,170,70,.55), rgba(218,170,70,0) 65%);
+    opacity:0;
+    pointer-events:none;
+}
+
+.logo-zone.active .halo{
+    animation:halo .9s ease-out;
+}
+
+.spark{
+    position:absolute;
+    width:6px;
+    height:6px;
+    background:#d8a13b;
+    border-radius:50%;
+    opacity:0;
+    pointer-events:none;
+    box-shadow:0 0 10px rgba(216,161,59,.9);
+}
+
+.spark.s1{ top:10%; left:15%; }
+.spark.s2{ top:8%; right:18%; }
+.spark.s3{ bottom:12%; left:20%; }
+.spark.s4{ bottom:10%; right:16%; }
+
+.logo-zone.active .s1{ animation:spark1 .85s ease-out; }
+.logo-zone.active .s2{ animation:spark2 .85s ease-out; }
+.logo-zone.active .s3{ animation:spark3 .85s ease-out; }
+.logo-zone.active .s4{ animation:spark4 .85s ease-out; }
+
+@keyframes respire{
+    0%{ transform:scale(1); }
+    50%{ transform:scale(1.045); }
+    100%{ transform:scale(1); }
+}
+
+@keyframes clicLogo{
+    0%{ transform:scale(1); }
+    35%{ transform:scale(.92); }
+    70%{ transform:scale(1.12); }
+    100%{ transform:scale(1); }
+}
+
+@keyframes halo{
+    0%{ opacity:0; transform:scale(.7); }
+    35%{ opacity:1; transform:scale(1); }
+    100%{ opacity:0; transform:scale(1.45); }
+}
+
+@keyframes spark1{
+    0%{ opacity:0; transform:translate(0,0) scale(.5); }
+    40%{ opacity:1; }
+    100%{ opacity:0; transform:translate(-18px,-24px) scale(1.2); }
+}
+
+@keyframes spark2{
+    0%{ opacity:0; transform:translate(0,0) scale(.5); }
+    40%{ opacity:1; }
+    100%{ opacity:0; transform:translate(20px,-22px) scale(1.2); }
+}
+
+@keyframes spark3{
+    0%{ opacity:0; transform:translate(0,0) scale(.5); }
+    40%{ opacity:1; }
+    100%{ opacity:0; transform:translate(-20px,22px) scale(1.2); }
+}
+
+@keyframes spark4{
+    0%{ opacity:0; transform:translate(0,0) scale(.5); }
+    40%{ opacity:1; }
+    100%{ opacity:0; transform:translate(18px,24px) scale(1.2); }
+}
+</style>
 </head>
 
 <body>
 
 <div class="page">
-
     <div class="image-container">
 
         <img class="image"
              src="image_geste.png"
              alt="Le Geste UNIS">
 
-        <img class="logo"
-             src="logoUNIS-transparent.png"
-             alt="Logo UNIS">
+        <div class="logo-zone" onclick="jouerCarillon()">
+            <div class="halo"></div>
+
+            <img class="logo"
+                 src="logoUNIS-transparent.png"
+                 alt="Logo UNIS">
+
+            <span class="spark s1"></span>
+            <span class="spark s2"></span>
+            <span class="spark s3"></span>
+            <span class="spark s4"></span>
+        </div>
+
+        <audio id="carillon" preload="auto">
+            <source src="carillon.mp3" type="audio/mpeg">
+        </audio>
 
     </div>
-
 </div>
 
-</body>
+<script>
+function jouerCarillon(){
+    const zone = document.querySelector(".logo-zone");
+    const son = document.getElementById("carillon");
 
+    zone.classList.remove("active");
+    void zone.offsetWidth;
+    zone.classList.add("active");
+
+    son.currentTime = 0;
+    son.play().catch(function(){});
+}
+</script>
+
+</body>
 </html>
