@@ -69,27 +69,73 @@ body{
     animation:halo .9s ease-out;
 }
 
-.spark{
-    position:absolute;
-    width:6px;
-    height:6px;
-    background:#d8a13b;
-    border-radius:50%;
-    opacity:0;
-    pointer-events:none;
-    box-shadow:0 0 10px rgba(216,161,59,.9);
+.star{
+position:absolute;
+color:#d8a13b;
+font-size:14px;
+opacity:0;
+pointer-events:none;
+text-shadow:0 0 10px rgba(216,161,59,.9);
 }
 
-.spark.s1{ top:10%; left:15%; }
-.spark.s2{ top:8%; right:18%; }
-.spark.s3{ bottom:12%; left:20%; }
-.spark.s4{ bottom:10%; right:16%; }
+.star.s1{ top:5%; left:10%; }
+.star.s2{ top:2%; left:42%; }
+.star.s3{ top:7%; right:8%; }
+.star.s4{ top:28%; left:0%; }
+.star.s5{ top:30%; right:0%; }
+.star.s6{ bottom:20%; left:5%; }
+.star.s7{ bottom:18%; right:5%; }
+.star.s8{ bottom:0%; left:30%; }
+.star.s9{ bottom:2%; right:30%; }
+.star.s10{ top:48%; left:-8%; }
+.star.s11{ top:50%; right:-8%; }
+.star.s12{ bottom:-8%; left:50%; }
 
-.logo-zone.active .s1{ animation:spark1 .85s ease-out; }
-.logo-zone.active .s2{ animation:spark2 .85s ease-out; }
-.logo-zone.active .s3{ animation:spark3 .85s ease-out; }
-.logo-zone.active .s4{ animation:spark4 .85s ease-out; }
+.logo-zone.active .star{
+animation:etoile 1.2s ease-out;
+}
 
+.logo-zone.active .s1{ animation-delay:0s; }
+.logo-zone.active .s2{ animation-delay:.05s; }
+.logo-zone.active .s3{ animation-delay:.1s; }
+.logo-zone.active .s4{ animation-delay:.15s; }
+.logo-zone.active .s5{ animation-delay:.2s; }
+.logo-zone.active .s6{ animation-delay:.25s; }
+.logo-zone.active .s7{ animation-delay:.3s; }
+.logo-zone.active .s8{ animation-delay:.35s; }
+.logo-zone.active .s9{ animation-delay:.4s; }
+.logo-zone.active .s10{ animation-delay:.45s; }
+.logo-zone.active .s11{ animation-delay:.5s; }
+.logo-zone.active .s12{ animation-delay:.55s; }
+
+@keyframes etoile{
+0%{
+opacity:0;
+transform:translate(0,0) scale(.4) rotate(0deg);
+}
+
+35%{
+opacity:1;
+}
+
+100%{
+opacity:0;
+transform:translate(var(--x), var(--y)) scale(1.4) rotate(180deg);
+}
+}
+
+.s1{ --x:-22px; --y:-28px; }
+.s2{ --x:0px; --y:-34px; }
+.s3{ --x:24px; --y:-26px; }
+.s4{ --x:-30px; --y:-4px; }
+.s5{ --x:30px; --y:-4px; }
+.s6{ --x:-24px; --y:22px; }
+.s7{ --x:24px; --y:22px; }
+.s8{ --x:-8px; --y:32px; }
+.s9{ --x:10px; --y:32px; }
+.s10{ --x:-34px; --y:8px; }
+.s11{ --x:34px; --y:8px; }
+.s12{ --x:0px; --y:38px; }
 @keyframes respire{
     0%{ transform:scale(1); }
     50%{ transform:scale(1.045); }
@@ -151,10 +197,18 @@ body{
                  src="logoUNIS-transparent.png"
                  alt="Logo UNIS">
 
-            <span class="spark s1"></span>
-            <span class="spark s2"></span>
-            <span class="spark s3"></span>
-            <span class="spark s4"></span>
+            <span class="star s1">✦</span>
+<span class="star s2">✧</span>
+<span class="star s3">✦</span>
+<span class="star s4">✧</span>
+<span class="star s5">✦</span>
+<span class="star s6">✧</span>
+<span class="star s7">✦</span>
+<span class="star s8">✧</span>
+<span class="star s9">✦</span>
+<span class="star s10">✧</span>
+<span class="star s11">✦</span>
+<span class="star s12">✧</span>
         </div>
 
         <audio id="carillon" preload="auto">
